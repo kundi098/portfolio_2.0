@@ -1,0 +1,680 @@
+/* ==========================================================================
+   PORTFOLIO 2.0 — EDITORIAL DESIGN SYSTEM
+   Fidelity: 1:1 translation from Figma Artboard / PDF reference
+   Typography: Inter / Grotesk Editorial Sans
+   Color Palette: Pure Monochrome (#000000, #111111, #444444, #888888, #b0b0b0, #ffffff)
+   ========================================================================== */
+
+:root {
+  --bg-color: #ffffff;
+  --text-primary: #000000;
+  --text-body: #111111;
+  --text-muted: #888888;
+  --text-light: #b0b0b0;
+  --border-hairline: #e2e2e2;
+  --border-dark: #000000;
+  
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  
+  --max-content-width: 1512px;
+  --page-padding-x: clamp(24px, 5vw, 80px);
+}
+
+/* --------------------------------------------------------------------------
+   RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  line-height: 1.5;
+  background-color: var(--bg-color);
+}
+
+img, video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL LAYOUT & CONTAINERS
+   -------------------------------------------------------------------------- */
+.page-canvas {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  position: relative;
+  padding: 0 var(--page-padding-x);
+}
+
+.portfolio-section {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-color);
+}
+
+/* Editorial Section Label (e.g. "01 / OVERVIEW", "02 / Work Experience") */
+.section-meta-label {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-light);
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT-SIDE NAVIGATION INDICATOR (TRACKS CHAPTERS 01-06)
+   -------------------------------------------------------------------------- */
+.side-timeline-nav {
+  position: fixed;
+  right: clamp(16px, 3.5vw, 56px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 100;
+  pointer-events: auto;
+}
+
+.side-nav-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-light);
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s ease, opacity 0.2s ease;
+  white-space: nowrap;
+}
+
+.side-nav-item .nav-pill {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  padding: 2px 7px;
+  border: 1px solid var(--text-primary);
+  border-radius: 2px;
+  color: var(--text-primary);
+  background-color: #ffffff;
+}
+
+.side-nav-item .nav-dash {
+  display: inline-block;
+  color: var(--text-light);
+  font-weight: 300;
+}
+
+.side-nav-item.is-active {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.side-nav-item.is-active .nav-pill {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+}
+
+.side-nav-item.is-active .nav-dash {
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   01 — HERO / COVER SECTION
+   -------------------------------------------------------------------------- */
+.section-hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 0;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-pill-badge {
+  background-color: #000000;
+  color: #ffffff;
+  font-size: clamp(18px, 1.8vw, 24px);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 8px 24px;
+  border-radius: 4px;
+  margin-bottom: clamp(24px, 3vh, 36px);
+  text-transform: uppercase;
+}
+
+.hero-main-title {
+  font-size: clamp(56px, 7.8vw, 110px);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   02 — ABOUT SECTION
+   -------------------------------------------------------------------------- */
+.section-about {
+  min-height: 100vh;
+  padding: clamp(60px, 8vh, 120px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-editorial-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.95fr) minmax(380px, 1.05fr);
+  gap: clamp(40px, 5vw, 90px);
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.about-portrait-holder {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+}
+
+.about-portrait-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+
+.about-content-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-subheading {
+  font-size: clamp(28px, 2.7vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: clamp(16px, 2vw, 28px);
+  color: var(--text-primary);
+}
+
+.about-giant-name {
+  font-size: clamp(52px, 6.2vw, 96px);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin-bottom: clamp(24px, 3vh, 44px);
+}
+
+.about-bio-text {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.62;
+  color: var(--text-body);
+  max-width: 520px;
+  margin-bottom: clamp(32px, 4vh, 48px);
+  font-weight: 400;
+}
+
+.about-metadata-grid {
+  display: grid;
+  grid-template-columns: minmax(200px, 1.3fr) minmax(160px, 1fr);
+  gap: 18px 32px;
+  max-width: 540px;
+  font-size: clamp(13px, 1vw, 15px);
+  line-height: 1.5;
+}
+
+.metadata-row {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.metadata-key {
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 80px;
+}
+
+.metadata-val {
+  color: var(--text-body);
+  font-weight: 400;
+}
+
+.metadata-val a {
+  color: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   03 — WORK EXPERIENCE SECTION
+   -------------------------------------------------------------------------- */
+.section-experience {
+  min-height: 100vh;
+  padding: clamp(60px, 8vh, 120px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.experience-editorial-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(400px, 1.15fr);
+  gap: clamp(40px, 6vw, 110px);
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+.experience-title-col {
+  padding-top: 10px;
+}
+
+.section-giant-title {
+  font-size: clamp(56px, 7vw, 100px);
+  font-weight: 800;
+  line-height: 0.94;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+.experience-list-col {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(36px, 5vh, 56px);
+  max-width: 560px;
+}
+
+.experience-entry {
+  display: flex;
+  flex-direction: column;
+}
+
+.exp-company-heading {
+  font-size: clamp(20px, 1.9vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.exp-duration-role {
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 14px;
+}
+
+.exp-body-narrative {
+  font-size: clamp(13px, 1vw, 14.5px);
+  line-height: 1.6;
+  color: #333333;
+  font-weight: 400;
+}
+
+/* --------------------------------------------------------------------------
+   STANDALONE CHAPTER INTRO PAGES (03 MOTION, 04 SHORT, 05 GRAPHIC)
+   Minimal, giant bold centered text surrounded by whitespace
+   -------------------------------------------------------------------------- */
+.section-chapter-intro {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(60px, 8vh, 100px) 0 clamp(40px, 5vh, 60px) 0;
+}
+
+.chapter-intro-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.chapter-giant-heading {
+  font-size: clamp(52px, 7.5vw, 104px);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   05 — MOTION GRAPHIC WORK SECTION
+   -------------------------------------------------------------------------- */
+.section-motion-work {
+  padding-bottom: clamp(80px, 10vh, 140px);
+}
+
+.feature-composition-block {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(400px, 1.15fr);
+  gap: clamp(40px, 6vw, 110px);
+  align-items: center;
+  margin-bottom: clamp(60px, 9vh, 130px);
+}
+
+.feature-media-frame {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+}
+
+.feature-media-frame img,
+.feature-media-frame video {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Editorial Work Card Grids */
+.editorial-gallery-block {
+  margin-top: clamp(40px, 6vh, 80px);
+}
+
+.cards-row-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.cards-row-four {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.media-card-holder {
+  position: relative;
+  width: 100%;
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+
+.media-card-holder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   07 — SHORT CONTENT WORK SECTION
+   -------------------------------------------------------------------------- */
+.section-short-work {
+  padding-bottom: clamp(80px, 10vh, 140px);
+}
+
+.short-feature-frame {
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+}
+
+.short-feature-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   08 — GRAPHIC DESIGN SECTION
+   -------------------------------------------------------------------------- */
+.section-graphic-work {
+  padding-bottom: clamp(80px, 10vh, 140px);
+}
+
+.posters-row-two {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: start;
+}
+
+.posters-row-two .poster-media-holder {
+  width: 100%;
+  max-width: 622px;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+}
+
+.posters-row-two .poster-media-holder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  aspect-ratio: auto;
+}
+
+.posters-row-four {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  margin-top: 16px;
+}
+
+.poster-carousel {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.poster-track {
+  display: flex;
+  width: max-content;
+  gap: 16px;
+  animation: poster-scroll 28s linear infinite;
+}
+
+.poster-media-holder {
+  position: relative;
+  flex: 0 0 auto;
+  width: clamp(180px, 19vw, 340px);
+  background-color: #f7f7f7;
+  overflow: hidden;
+}
+
+.poster-media-holder img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 4 / 5.5;
+}
+
+@keyframes poster-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .poster-media-holder {
+    width: clamp(140px, 42vw, 220px);
+  }
+
+  .poster-track {
+    gap: 12px;
+    animation-duration: 22s;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   09 — LET'S CONNECT / FOOTER SECTION
+   -------------------------------------------------------------------------- */
+.section-connect {
+  min-height: 100vh;
+  padding: clamp(60px, 8vh, 120px) 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.connect-editorial-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(400px, 1.15fr);
+  gap: clamp(40px, 6vw, 110px);
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.connect-table-holder {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 580px;
+  border-top: 1px solid var(--text-primary);
+  border-bottom: 1px solid var(--text-primary);
+}
+
+.connect-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  padding: clamp(14px, 1.8vh, 22px) 0;
+  border-bottom: 1px solid var(--text-primary);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.connect-row:last-child {
+  border-bottom: none;
+}
+
+.connect-row:hover {
+  opacity: 0.75;
+}
+
+.connect-row-key {
+  font-size: clamp(18px, 1.7vw, 24px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.connect-row-val {
+  font-size: clamp(14px, 1.15vw, 16px);
+  font-weight: 400;
+  color: var(--text-light);
+  letter-spacing: 0.02em;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   Retain editorial elegance, typography scale and white space
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .side-timeline-nav {
+    display: none; /* Hide sticky timeline on tablet/mobile to prevent clutter */
+  }
+
+  .about-editorial-grid,
+  .experience-editorial-grid,
+  .feature-composition-block,
+  .connect-editorial-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .about-portrait-holder {
+    max-width: 440px;
+  }
+
+  .feature-media-frame,
+  .short-feature-frame {
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --page-padding-x: 24px;
+  }
+
+  .section-hero {
+    min-height: 90vh;
+  }
+
+  .cards-row-three {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .cards-row-four {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .posters-row-two {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .posters-row-four {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .connect-row {
+    grid-template-columns: 130px 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .cards-row-four {
+    grid-template-columns: 1fr;
+  }
+
+  .posters-row-four {
+    grid-template-columns: 1fr;
+  }
+
+  .about-metadata-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
